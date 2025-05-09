@@ -25,6 +25,7 @@
     "expo": "~52.0.43",
     "expo-blur": "~14.0.3",
     "expo-constants": "~17.0.8",
+    "expo-dev-client": "~5.0.20",
     "expo-device": "~7.0.3",
     "expo-font": "~13.0.4",
     "expo-haptics": "~14.0.1",
@@ -36,6 +37,7 @@
     "expo-status-bar": "~2.0.1",
     "expo-symbols": "~0.2.2",
     "expo-system-ui": "~4.0.9",
+    "expo-updates": "~0.27.4",
     "expo-web-browser": "~14.0.2",
     "lottie-ios": "^4.5.1",
     "lottie-react": "^2.4.1",
@@ -45,7 +47,6 @@
     "react-dom": "18.3.1",
     "react-native": "0.76.9",
     "react-native-animatable": "^1.4.0",
-    "react-native-appearance": "^0.3.4",
     "react-native-fast-image": "^8.6.3",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-linear-gradient": "^2.8.3",
@@ -56,9 +57,7 @@
     "react-native-vector-icons": "^10.2.0",
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
-    "twrnc": "^4.6.1",
-    "expo-updates": "~0.27.4",
-    "expo-dev-client": "~5.0.20"
+    "twrnc": "^4.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
