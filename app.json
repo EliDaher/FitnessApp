@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "FitnessTime",
-    "slug": "FitnessTime",
+    "slug": "fitness",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -49,7 +49,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "0579d707-d964-4ac3-83ff-39518dd8e460"
+        "projectId": "8c2df21e-03e7-4b58-a175-fb5b8259ae7b"
       }
     }
   }
