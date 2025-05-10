@@ -39,13 +39,13 @@
     "runtimeVersion": {
       "policy": "appVersion"
     },
-    "owner": "elidaher",
+    "owner": "fitness56",
     "extra": {
       "router": {
         "origin": false
       },
       "eas": {
-        "projectId": "8c2df21e-03e7-4b58-a175-fb5b8259ae7b"
+        "projectId": "634e5a1a-c6fc-4534-b8d3-42406555d9a7"
       }
     }
   }
