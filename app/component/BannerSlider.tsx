@@ -4,7 +4,6 @@ import { FlatList, Image, Dimensions, View } from 'react-native';
 import { useTailwind } from '@/app/hooks/useTailwind';
 
 const bannerImages = [
-  require('@/assets/images/banners/banner1.png'),
   require('@/assets/images/banners/banner2.png'),
   require('@/assets/images/banners/banner3.png'),
 ];
