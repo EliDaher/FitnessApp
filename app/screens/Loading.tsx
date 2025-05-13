@@ -24,7 +24,7 @@ export default function Loading() {
     <ScreenWrapper>  
       <View style={tw`flex-1 items-center justify-center bg-transparent`}>
         <LottieView
-          source={require('../../assets/images/LoadingAni.json')}
+          source={require('../../assets/images/loadingAni.json')}
           autoPlay
           loop
           style={{ width: 300, height: 300 }}

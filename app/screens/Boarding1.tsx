@@ -113,21 +113,21 @@ export default function Boarding1() {
           <View>
             
           <Animated.Image
-            source={require('../../assets/images/WorkOut.png')}
+            source={require('../../assets/images/workOut.png')}
             style={[tw`mx-auto mb-4 ${shownImg == 1 ? `block`: `hidden`}`,
                 { opacity: fadeAnim1 },
 
             ]}
           />
           <Animated.Image
-            source={require('../../assets/images/Nutrition.png')}
+            source={require('../../assets/images/nutrition.png')}
             style={[tw`mx-auto mb-4 ${shownImg == 2 ? `block`: `hidden`}`,
                 { opacity: fadeAnim2 },
 
             ]}
           />
           <Animated.Image
-            source={require('../../assets/images/Community.png')}
+            source={require('../../assets/images/community.png')}
             style={[tw`mx-auto mb-4 ${shownImg == 3 ? `block`: `hidden`}`,
                 { opacity: fadeAnim2 },
 

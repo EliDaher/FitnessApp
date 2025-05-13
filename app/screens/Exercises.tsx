@@ -19,20 +19,20 @@ type Exercise = {
 const muscleGroups = ["الكل", "صدر", "ظهر", "ارجل امامي", "ارجل خلفي", "باي سيبس", "تراي سيبس", "كتف", "معدة", "ترابيز", "ورك", "بطات", "سواعد", "كارديو"]; 
 
 const muscleImages: { [key: string]: any } = {
-  "صدر": require("@/assets/images/Muscles/Chest.png"),
-  "ظهر": require("@/assets/images/Muscles/Back.png"),
-  "ارجل امامي": require("@/assets/images/Muscles/QUADRICE.png"),
-  "ارجل خلفي": require("@/assets/images/Muscles/Hamstring.png"),
-  "باي سيبس": require("@/assets/images/Muscles/Biceps.png"), 
-  "تراي سيبس": require("@/assets/images/Muscles/Triceps.png"),
-  "كتف": require("@/assets/images/Muscles/Shoulder.png"),
-  "معدة": require("@/assets/images/Muscles/ABS.png"),
-  "ترابيز": require("@/assets/images/Muscles/Trapez.png"),
-  //"ورك": require("@/assets/images/Muscles/Deltoid.png"),
-  "بطات": require("@/assets/images/Muscles/Calf2.png"),
-  "سواعد": require("@/assets/images/Muscles/Wirst.png"),
-  "كارديو": require("@/assets/images/Muscles/Heart.png"),
-  "الكل": require("@/assets/images/Muscles/Muscles.png"),
+  "صدر": require("@/assets/images/muscles/chest.png"),
+  "ظهر": require("@/assets/images/muscles/back.png"),
+  "ارجل امامي": require("@/assets/images/muscles/quadrice.png"),
+  "ارجل خلفي": require("@/assets/images/muscles/hamstring.png"),
+  "باي سيبس": require("@/assets/images/muscles/biceps.png"), 
+  "تراي سيبس": require("@/assets/images/muscles/triceps.png"),
+  "كتف": require("@/assets/images/muscles/shoulder.png"),
+  "معدة": require("@/assets/images/muscles/abs.png"),
+  "ترابيز": require("@/assets/images/muscles/trapez.png"),
+  //"ورك": require("@/assets/images/muscles/deltoid.png"),
+  "بطات": require("@/assets/images/muscles/calf2.png"),
+  "سواعد": require("@/assets/images/muscles/wirst.png"),
+  "كارديو": require("@/assets/images/muscles/heart.png"),
+  "الكل": require("@/assets/images/muscles/muscles.png"),
 };
 
 export default function Exercises() {
