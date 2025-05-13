@@ -23,33 +23,28 @@ export default function Landing() {
     try {
       const username = await AsyncStorage.getItem('username');
       const password = await AsyncStorage.getItem('password');
-      alert(username)
+      console.log("Username from storage:", username);
+    
       if (username) {
         const res = await login(username, password || '');
+        console.log("Login result:", res);
+      
         if (res?.data) {
-          router.replace('/(tabs)/Home'); // تسجيل دخول ناجح
+          router.replace('/(tabs)/Home');
         } else {
-          router.replace('/screens/Boarding1'); // بيانات غير صالحة
+          router.replace('/screens/Boarding1');
         }
       } else {
-        router.replace('/screens/Boarding1'); // لا يوجد تسجيل دخول سابق
+        router.replace('/screens/Boarding1');
       }
     } catch (error) {
-      console.log("checkIfLoggedIn error:", error);
-      router.replace('/screens/Boarding1'); // خطأ عام
+      console.log("Error checking login:", error);
+      router.replace('/screens/Boarding1');
     } finally {
       setLoading(false);
     }
   };
 
-  if (loading) {
-    // يمكن استبدالها برسوم متحركة أو مؤشر تحميل
-    return (
-      <View style={tw`flex-1 justify-center items-center bg-gray-950`}>
-        <Text style={tw`text-white text-lg`}>Loading...</Text>
-      </View>
-    );
-  }
 
   return (
     <GestureHandlerRootView>
