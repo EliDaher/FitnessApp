@@ -14,13 +14,12 @@ export default function Landing() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (pathname === '/screens/Landing') {
-      checkIfLoggedIn();
-    }
+    checkIfLoggedIn();
   }, []);
 
   const checkIfLoggedIn = async () => {
-    try {
+    router.replace('/screens/Login')
+    /*try {
       const username = await AsyncStorage.getItem('username') || '';
       const password = await AsyncStorage.getItem('password') || '';
       console.log("Username from storage:", username);
@@ -42,7 +41,8 @@ export default function Landing() {
       router.replace('/screens/Boarding1');
     } finally {
       setLoading(false);
-    }
+    }*/
+
   };
 
 
