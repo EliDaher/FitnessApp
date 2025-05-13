@@ -21,14 +21,14 @@ export default function Landing() {
 
   const checkIfLoggedIn = async () => {
     try {
-      const username = await AsyncStorage.getItem('username');
-      const password = await AsyncStorage.getItem('password');
+      const username = await AsyncStorage.getItem('username') || '';
+      const password = await AsyncStorage.getItem('password') || '';
       console.log("Username from storage:", username);
-    
-      if (username) {
+
+      if (username != '' && password != '') {
         const res = await login(username, password || '');
         console.log("Login result:", res);
-      
+
         if (res?.data) {
           router.replace('/(tabs)/Home');
         } else {
