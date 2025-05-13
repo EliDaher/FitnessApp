@@ -113,7 +113,7 @@ export default function Boarding1() {
           <View>
             
           <Animated.Image
-            source={require('../../assets/images/workOut1.png')}
+            source={require('../../assets/images/workOut.png')}
             style={[tw`mx-auto mb-4 ${shownImg == 1 ? `block`: `hidden`}`,
                 { opacity: fadeAnim1 },
 
