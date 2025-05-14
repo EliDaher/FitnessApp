@@ -34,6 +34,7 @@
       ]
     ],
     "experiments": {
+      "router": true,
       "typedRoutes": true
     },
     "runtimeVersion": "1.0.0",
