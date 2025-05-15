@@ -106,7 +106,7 @@ export default function Home() {
 
       <View style={tw`bg-secondary-500/25 pb-8 rounded-10 mt-5 border-2 border-secondary-400/80`}
         onTouchEnd={()=>{
-          router.navigate('/component/UserWorkout')
+          router.navigate('/UserWorkout')
         }}
       >
 

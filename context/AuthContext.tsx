@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = async () => {
     await AsyncStorage.removeItem('username');
     await AsyncStorage.removeItem('password');
-    router.replace('/screens/Login')
+    router.replace('/Login')
     setUser(null);
   };
 
