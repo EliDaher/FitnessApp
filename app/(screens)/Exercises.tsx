@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Image, TextInput, TouchableOpacity, FlatList } 
 import { useTailwind } from '../hooks/useTailwind';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getAllExercises } from '../apis/exercise.api';
-import ScreenWrapper from '../component/ScreenWrapper';
+import ScreenWrapper from '../(component)/ScreenWrapper';
 import { router } from 'expo-router';
 
 type Exercise = {
@@ -101,7 +101,7 @@ export default function Exercises() {
               <View style={tw`mb-4 border border-white/20 rounded-xl p-4 bg-white/10`}
                 onTouchEnd={()=>{
                   router.navigate({
-                    pathname: `/component/ExercisePage`,
+                    pathname: `/ExercisePage`,
                     params: { exercise: JSON.stringify(item) }
                   })
                 }}  

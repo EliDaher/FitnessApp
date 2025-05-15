@@ -2,15 +2,15 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { useTailwind } from '../hooks/useTailwind'
 import { router } from 'expo-router';
-import Slider from '../component/Slider'
+import Slider from '../(component)/Slider'
 import { getUserData } from '../apis/user.api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import PersonalDetails from '../component/PersonalDetails';
-import Status from '../component/Status';
+import PersonalDetails from '../(component)/PersonalDetails';
+import Status from '../(component)/Status';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@/context/ThemeContext';
 import { AuthContext } from '@/context/AuthContext';
-import Loading from '../screens/Loading';
+import Loading from '../(screens)/Loading';
 
 
 type userType = {

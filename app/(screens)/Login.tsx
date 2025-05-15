@@ -2,7 +2,7 @@ import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform
 import * as Animatable from 'react-native-animatable';
 import { useTailwind } from '@/app/hooks/useTailwind';
 import React, { useState, useContext } from 'react';
-import FTlogo from '../component/FTlogo';
+import FTlogo from '../(component)/FTlogo';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { login } from '../apis/auth.api';
@@ -103,7 +103,7 @@ export default function Login() {
         {/* Sign Up Link */}
         <View style={tw`flex-row mt-6`}>
           <Text style={tw`text-white`}>Don't have an account?</Text>
-          <TouchableOpacity onPress={() => router.navigate('/screens/SignUp')}>
+          <TouchableOpacity onPress={() => router.navigate('/SignUp')}>
             <Text style={tw`text-secondary-500 underline ml-1`}>Sign Up</Text>
           </TouchableOpacity>
         </View>

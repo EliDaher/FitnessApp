@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import React, { useState, useContext } from 'react';
-import FTlogo from '../component/FTlogo';
+import FTlogo from '../(component)/FTlogo';
 import { useTailwind } from '@/app/hooks/useTailwind';
 import { useTheme } from '@/context/ThemeContext';
 import { Ionicons } from '@expo/vector-icons';
@@ -20,7 +20,7 @@ export default function SignUp() {
   const tw = useTailwind();
 
   const handleSignUp = async () => {
-       router.navigate('/screens/Gender')
+       router.navigate('/Gender')
 
        try {
         const response = await signup(
@@ -35,7 +35,7 @@ export default function SignUp() {
         await AsyncStorage.setItem('username', username); 
         await AsyncStorage.setItem('password', password);
 
-        router.navigate('/screens/Gender')
+        router.navigate('/Gender')
         console.log("User signed up:", response.data);
 
       } catch (error: any) {
@@ -168,7 +168,7 @@ export default function SignUp() {
         {/* Login Redirect */}
         <View style={tw`flex-row mt-6`}>
           <Text style={tw`text-white`}>Already have an account?</Text>
-          <TouchableOpacity onPress={() => router.navigate('/screens/Login')}>
+          <TouchableOpacity onPress={() => router.navigate('/Login')}>
             <Text style={tw`text-secondary-500 underline ml-1`}>Login</Text>
           </TouchableOpacity>
         </View>

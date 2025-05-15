@@ -15,7 +15,7 @@ import { addWeight } from '../apis/auth.api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Animatable from 'react-native-animatable';
 import { Ionicons } from '@expo/vector-icons';
-import ScreenWrapper from '../component/ScreenWrapper';
+import ScreenWrapper from '../(component)/ScreenWrapper';
 
 const { width } = Dimensions.get('window');
 const ITEM_WIDTH = 55;
@@ -49,7 +49,7 @@ export default function Weight() {
         return;
       }
       await addWeight(selectedWeight, username);
-      router.navigate('/screens/Hieght');
+      router.navigate('/Hieght');
       setLoading(false)
     } catch (error: any) {
       console.log("Signup error:", error.response?.data?.error || error.message);

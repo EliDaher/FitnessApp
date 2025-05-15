@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import LottieView from 'lottie-react-native';
 import { useTailwind } from '../hooks/useTailwind';
 import { router, usePathname } from 'expo-router';
-import ScreenWrapper from '../component/ScreenWrapper';
+import ScreenWrapper from '../(component)/ScreenWrapper';
 
 export default function Loading() {
 
@@ -12,7 +12,7 @@ export default function Loading() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (pathname == '/screens/Loading') {
+      if (pathname == '/Loading') {
         router.navigate('/(tabs)/Home')
       }
     }, 5500);

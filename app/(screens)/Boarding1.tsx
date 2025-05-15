@@ -13,7 +13,7 @@ export default function Boarding1() {
   const tw = useTailwind();
 
   useEffect(()=>{
-    (shownImg > 3 ? router.replace("/screens/Login") : "")
+    (shownImg > 3 ? router.replace("/Login") : "")
   },[shownImg])
 
   useEffect(()=>{

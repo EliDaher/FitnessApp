@@ -5,7 +5,7 @@ import { useTailwind } from '../hooks/useTailwind'
 import { useLocalSearchParams } from 'expo-router'
 import { ScrollView } from 'react-native-gesture-handler'
 import { getExerciseByName } from '../apis/exercise.api'
-import Loading from '../screens/Loading'
+import Loading from '../(screens)/Loading'
 
 type Exercise = {
   bodyPart: string;

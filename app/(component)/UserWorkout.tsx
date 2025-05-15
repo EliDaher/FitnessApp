@@ -5,7 +5,7 @@ import ScreenWrapper from './ScreenWrapper';
 import { getUserWorkout, skipOrStartNewWorkout } from '../apis/user.api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FontAwesome } from '@expo/vector-icons';
-import Loading from '../screens/Loading';
+import Loading from '../(screens)/Loading';
 import { router } from 'expo-router';
 
 type SetType = {
@@ -153,7 +153,7 @@ export default function UserWorkout() {
               <View
                 onTouchEnd={() => {
                   router.navigate({
-                    pathname: `/component/ExercisePage`,
+                    pathname: `/ExercisePage`,
                     params: { exercise: JSON.stringify(exercise) },
                   });
                 }}

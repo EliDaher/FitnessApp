@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { addGender } from '../apis/auth.api';
 import * as Animatable from 'react-native-animatable';
 import { Ionicons } from '@expo/vector-icons';
-import ScreenWrapper from '../component/ScreenWrapper';
+import ScreenWrapper from '../(component)/ScreenWrapper';
 
 export default function Gender() {
   const [gender, setGender] = useState('male');
@@ -30,7 +30,7 @@ export default function Gender() {
         return;
       }
       await addGender(gender, username);
-      router.navigate('/screens/Weight');
+      router.navigate('/Weight');
       setLoading(false)
     } catch (error: any) {
       console.log("Signup error:", error.response?.data?.error || error.message);

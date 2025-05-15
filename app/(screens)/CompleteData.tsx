@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, TextInput, Platform } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import ScreenWrapper from '../component/ScreenWrapper'
+import ScreenWrapper from '../(component)/ScreenWrapper'
 import { useTailwind } from '../hooks/useTailwind'
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import { updatePersonalDetails } from '../apis/user.api';

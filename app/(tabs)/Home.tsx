@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { useTailwind } from '@/app/hooks/useTailwind';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
-import WorkOutWeek from '../component/WorkOutWeek';
+import WorkOutWeek from '../(component)/WorkOutWeek';
 import { FontAwesome6, Ionicons } from '@expo/vector-icons';
-import ScreenWrapper from '../component/ScreenWrapper';
-import BannerSlider from '../component/BannerSlider';
+import ScreenWrapper from '../(component)/ScreenWrapper';
+import BannerSlider from '../(component)/BannerSlider';
 import { useTheme } from '@/context/ThemeContext';
-import Loading from '../screens/Loading';
+import Loading from '../(screens)/Loading';
 
 
 type Exercise = {
@@ -38,7 +38,7 @@ export default function Home() {
     setLoading(true)
 
     const username = await AsyncStorage.getItem('username');
-    if(!username) { router.replace('/screens/Login') }
+    if(!username) { router.replace('/Login') }
     setUserName(username || '');
     
     setLoading(false)
@@ -76,21 +76,21 @@ export default function Home() {
         <ScrollView horizontal>
 
           <TouchableOpacity style={tw`mt-5 mr-2 rounded-xl border border-white/50 shadow-lg shadow-white bg-black w-24 py-2`} 
-            onPress={()=>{ router.navigate('/screens/Exercises') }}
+            onPress={()=>{ router.navigate('/Exercises') }}
           >
             <FontAwesome6 name="dumbbell" size={24} style={tw`text-white m-auto`} />
             <Text style={tw`text-white text-center mt-2`}>التمارين</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={tw`mt-5 mr-2 rounded-xl border border-white/50 shadow-lg shadow-white bg-black w-24 py-2`}
-            onPress={()=>{ router.navigate('/screens/DietPage') }}
+            onPress={()=>{ router.navigate('/DietPage') }}
           >
             <FontAwesome6 name="apple-whole" size={24} style={tw`text-white m-auto`} />
             <Text style={tw`text-white text-center mt-2`}>النظام الغذائي</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={tw`mt-5 mr-2 rounded-xl border border-white/50 shadow-lg shadow-white bg-black w-24 py-2`} 
-            onPress={()=>{ router.navigate('/screens/WorkoutClasses') }}
+            onPress={()=>{ router.navigate('/WorkoutClasses') }}
           >
             <FontAwesome6 name="person-running" size={24} style={tw`text-white m-auto`} />
             <Text style={tw`text-white text-center mt-2 text-xs`}>الحصص التدريبية</Text>

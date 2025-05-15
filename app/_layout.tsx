@@ -20,7 +20,7 @@ function InnerLayout() {
         translucent={false}
       />
       <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="screens/Landing" />
+        <Stack.Screen name="(screens)/Landing" />
         <Stack.Screen name="(tabs)" />
       </Stack>
     </>

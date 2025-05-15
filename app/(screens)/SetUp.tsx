@@ -20,7 +20,7 @@ export default function SetUp() {
               </Text>
               <TouchableOpacity
                   onPress={()=>{
-                      router.replace('/screens/Gender')
+                      router.replace('/Gender')
                   }}
               >
                   <Text style={tw`px-20 py-2 text-3xl text-primary-400 border border-primary-400 rounded-3xl`}>Next</Text>

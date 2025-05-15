@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import * as Animatable from 'react-native-animatable';
 import { useTailwind } from '@/app/hooks/useTailwind';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import FTlogo from '../component/FTlogo';
+import FTlogo from '../(component)/FTlogo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { login } from '../apis/auth.api';
 
@@ -18,32 +18,29 @@ export default function Landing() {
   }, []);
 
   const checkIfLoggedIn = async () => {
-    router.replace('/screens/Login')
-    /*try {
+    try {
       const username = await AsyncStorage.getItem('username') || '';
       const password = await AsyncStorage.getItem('password') || '';
       console.log("Username from storage:", username);
-
-      if (username != '' && password != '') {
+      if (username && password) {
         const res = await login(username, password || '');
         console.log("Login result:", res);
-
         if (res?.data) {
-          router.replace('/(tabs)/Home');
+          router.replace('/Home'); // ✅ صحيح
         } else {
-          router.replace('/screens/Boarding1');
+          router.replace('/Boarding1'); // ✅ بدون screens
         }
       } else {
-        router.replace('/screens/Boarding1');
+        router.replace('/Boarding1'); // ✅ بدون screens
       }
-    } catch (error) {
+    }catch (error) {
       console.log("Error checking login:", error);
-      router.replace('/screens/Boarding1');
+      router.replace('/Boarding1'); // ✅
     } finally {
-      setLoading(false);
-    }*/
+     setLoading(false);
+    }
+  } 
 
-  };
 
 
   return (

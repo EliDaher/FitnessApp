@@ -15,7 +15,7 @@ import { addHeight } from '../apis/auth.api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Animatable from 'react-native-animatable';
 import { Ionicons } from '@expo/vector-icons';
-import ScreenWrapper from '../component/ScreenWrapper';
+import ScreenWrapper from '../(component)/ScreenWrapper';
 
 const ITEM_HEIGHT = 60;
 const { height } = Dimensions.get('window');
@@ -54,7 +54,7 @@ export default function Height() {
         selectedHeight,
         username,
       );
-      router.navigate('/screens/CompleteData')
+      router.navigate('/CompleteData')
       setLoading(false)
     } catch (error: any) {
       console.log("Height error:", error.response?.data?.error || error.message);

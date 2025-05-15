@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import ScreenWrapper from '../component/ScreenWrapper'
+import ScreenWrapper from '../(component)/ScreenWrapper'
 import { useTailwind } from '../hooks/useTailwind'
 
-export default function DietPage() {
+export default function WorkoutClasses() {
 
     const tw = useTailwind()
 
