@@ -21,7 +21,7 @@ export default function Landing() {
 
   const checkIfLoggedIn = async () => {
     try {
-      const username = await AsyncStorage.getItem('username') || '';
+     /* const username = await AsyncStorage.getItem('username') || '';
       const password = await AsyncStorage.getItem('password') || '';
       console.log("Username from storage:", username);
       if (username && password) {
@@ -35,7 +35,7 @@ export default function Landing() {
         }
       } else {
         router.replace('/Boarding1'); // ✅ بدون screens
-      }
+      }*/
     }catch (error) {
       console.log("Error checking login:", error);
       router.replace('/Boarding1'); // ✅
@@ -50,7 +50,7 @@ export default function Landing() {
     <GestureHandlerRootView>
       <Image 
         source={require('../../assets/images/youngSporty.png')}
-        style={tw`absolute top-0 left-0 w-full`}
+        style={tw`absolute top-0 left-0 w-full h-full`}
       />
       <View style={tw`flex-1 items-center justify-center bg-gray-950 opacity-80`}>
         <Animatable.View animation="slideInDown" duration={1500}>

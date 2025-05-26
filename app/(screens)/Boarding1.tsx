@@ -133,7 +133,7 @@ export default function Boarding1() {
 
             ]}
           />
-          <Text style={tw`text-white font-bold text-xl text-center`}>
+          <Text style={tw`text-black font-bold text-xl text-center`}>
             {pageText}
           </Text>
         </View>
@@ -143,9 +143,9 @@ export default function Boarding1() {
           onPressIn={() => {
             if (shownImg < 4) setShownImg(shownImg + 1);
           }}
-          style={tw`self-center px-14 py-3 rounded-full bg-white/20 border border-white absolute top-[150px]`}
+          style={tw`self-center px-14 py-3 rounded-full bg-black/20 border border-black absolute top-[150px]`}
         >
-          <Text style={tw`text-white text-lg font-semibold`}>Next</Text>
+          <Text style={tw`text-black text-lg font-semibold`}>Next</Text>
         </TouchableOpacity>
       </View>
     </View>
