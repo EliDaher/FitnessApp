@@ -10,7 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from '@/context/AuthContext';
 
 export default function Login() {
-  const { authLogin: contextLogin } = useContext(AuthContext);
+  const { authLogin } = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [focusField, setFocusField] = useState<'username' | 'password' | null>(null);
@@ -21,6 +21,7 @@ export default function Login() {
       const response = await login(username, password);
       await AsyncStorage.setItem('username', username);
       await AsyncStorage.setItem('password', password);
+      authLogin(response.data.userData)
       router.navigate(`/(tabs)/Home`);
     } catch (error: any) {
       console.log("Login error:", error.response?.data?.error || error.message);
@@ -60,7 +61,7 @@ export default function Login() {
 
           {/* Username */}
           <View style={tw`mb-4`}>
-            <Text style={tw`text-white mb-1 ml-2`}>Username</Text>
+            <Text style={tw`text-white text-right text-lg mb-1 mr-2`}>الاسم الثلاثي او رقم الجوال</Text>
             <TextInput
               placeholder="Enter your username"
               placeholderTextColor="#999"
@@ -76,7 +77,7 @@ export default function Login() {
 
           {/* Password */}
           <View style={tw`mb-6`}>
-            <Text style={tw`text-white mb-1 ml-2`}>Password</Text>
+            <Text style={tw`text-white text-right text-lg mb-1 mr-2`}>كلمة المرور</Text>
             <TextInput
               placeholder="Enter your password"
               placeholderTextColor="#999"

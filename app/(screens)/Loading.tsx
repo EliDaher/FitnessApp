@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React, {useEffect} from 'react';
 import LottieView from 'lottie-react-native';
 import { useTailwind } from '../hooks/useTailwind';
@@ -11,7 +11,7 @@ export default function Loading() {
   const tw = useTailwind();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const timer = setTimeout(() => { 
       if (pathname == '/Loading') {
         router.navigate('/(tabs)/Home')
       }
@@ -21,14 +21,15 @@ export default function Loading() {
   }, []);
 
   return (
-    <ScreenWrapper>  
-      <View style={tw`flex-1 items-center justify-center bg-transparent`}>
-        <LottieView
+    <ScreenWrapper showBack={false}>  
+      <View style={tw`flex-1 items-center justify-center bg-[#ffffff]`}>
+        {/*<LottieView
           source={require('../../assets/images/loadingAni.json')}
           autoPlay
           loop
           style={{ width: 300, height: 300 }}
-          />
+        />*/}
+        <Image source={require('@/assets/images/banners/fitnessTime.png')}/>
       </View>
     </ScreenWrapper>
   );

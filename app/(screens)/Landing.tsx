@@ -1,17 +1,19 @@
 import { View, Text, Image } from 'react-native';
 import { router, usePathname } from 'expo-router';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import * as Animatable from 'react-native-animatable';
 import { useTailwind } from '@/app/hooks/useTailwind';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import FTlogo from '../(component)/FTlogo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { login } from '../apis/auth.api';
+import { AuthContext } from '@/context/AuthContext';
 
 export default function Landing() {
   const pathname = usePathname(); 
   const tw = useTailwind();
   const [loading, setLoading] = useState(true);
+  const { authLogin } = useContext(AuthContext);
 
   useEffect(() => {
     checkIfLoggedIn();
@@ -27,6 +29,7 @@ export default function Landing() {
         console.log("Login result:", res);
         if (res?.data) {
           router.replace('/Home'); // ✅ صحيح
+          authLogin(res.data.userData)
         } else {
           router.replace('/Boarding1'); // ✅ بدون screens
         }

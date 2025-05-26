@@ -79,7 +79,7 @@ export default function SignUp() {
           <View style={tw`mb-4`}>
             <Text style={tw`text-white mb-1 ml-2`}>Full Name / الاسم كامل</Text>
             <TextInput
-              placeholder="Choose a fullName"
+              placeholder="Choose a FullName"
               placeholderTextColor="#999"
               value={fullName}
               onChangeText={setFullName}
@@ -108,9 +108,9 @@ export default function SignUp() {
           
           {/* Username */}
           <View style={tw`mb-4`}>
-            <Text style={tw`text-white mb-1 ml-2`}>Username / اسم المستخدم</Text>
+            <Text style={tw`text-white mb-1 ml-2`}>Phone Number / رقم الجوال</Text>
             <TextInput
-              placeholder="Choose a username"
+              placeholder="Your phone number"
               placeholderTextColor="#999"
               value={username}
               onChangeText={setUsername}

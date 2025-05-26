@@ -12,6 +12,9 @@ export const updatePersonalDetails = (username: string, address: string, job: st
 export const getUserWorkout = (username: string) =>
   API.post("/getUserWorkout", { username });
 
+export const getNutritionProgramById = (id: string) =>
+  API.get(`/getNutritionProgramById/${id}`);
+
 export const skipOrStartNewWorkout = (username: string) =>
   API.post("/skipOrStartNewWorkout", { username });
 

@@ -14,22 +14,18 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: tw.color('white'),
+          backgroundColor: tw.color('black'),
           height: 55,
+          width: '100%',
           position: 'absolute',
-          left: 20,
-          right: 20,
-          bottom: 5,
-          borderRadius: 40,
           elevation: 5, // Android shadow
           shadowColor: '#000', // iOS shadow
           shadowOpacity: 0.1,
           shadowOffset: { width: 0, height: 4 },
           shadowRadius: 10,
-          marginHorizontal: 15,
         },
-        tabBarActiveTintColor: tw.color('secondary-400'),
-        tabBarInactiveTintColor: tw.color('gray-700'),
+        tabBarActiveTintColor: tw.color('white/80'),
+        tabBarInactiveTintColor: tw.color('white/50'),
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: '600',
@@ -41,8 +37,8 @@ export default function TabLayout() {
         options={{
           tabBarIcon: ({ focused, size }) => (
             <Ionicons 
-              style={tw` ${focused ? 'text-secondary-400' : 'text-gray-700'}`} size={focused ? size * 0.9 : size }
-              name="home"
+              style={tw` ${focused ? 'text-white' : 'text-white/80'}`} size={focused ? size * 0.9 : size }
+              name={`${focused ? `home` : `home-outline`}`}
             ></Ionicons>
           ),
           tabBarLabel: 'الرئيسية',
@@ -53,8 +49,8 @@ export default function TabLayout() {
         options={{
           tabBarIcon: ({ focused, size }) => (
             <Ionicons 
-            style={tw` ${focused ? 'text-secondary-400' : 'text-gray-700'}`} size={focused ? size * 0.9 : size }
-            name="person"
+            style={tw` ${focused ? 'text-white' : 'text-white/80'}`} size={focused ? size * 0.9 : size }
+            name={`${focused ? `person` : `person-outline`}`}
             ></Ionicons>  
           ),
           tabBarLabel: 'الملف الشخصي',

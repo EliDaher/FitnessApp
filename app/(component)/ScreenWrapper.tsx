@@ -23,13 +23,13 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({ children, showBack = true
 
       {/* خلفية متدرجة */}
       <LinearGradient
-        colors={[tw.color('black')!, tw.color('black/30')!, tw.color('black/80')!]}
+        colors={[tw.color('black')!, tw.color('white/1')!, tw.color('white/4')!]}
         style={StyleSheet.absoluteFill}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
       />
-
-      {/* دوائر متحركة شفافة */}
+{/*
+      {/* دوائر متحركة شفافة 
       {[...Array(3)].map((_, i) => (
         <Animatable.View
           key={i}
@@ -53,7 +53,7 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({ children, showBack = true
         />
       ))}
 
-      {/* أيقونات عشوائية تتحرك */}
+      {/* أيقونات عشوائية تتحرك 
       {[
         { icon: 'fitness', top: '75%', left: '20%' },
         { icon: 'basketball', top: '10%', left: '80%' },
@@ -78,7 +78,7 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({ children, showBack = true
           <Ionicons style={{ color: tw.color('white/10') }} size={56} name={item.icon as any} />
         </Animatable.View>
       ))}
-
+*/}
       {/* زر الرجوع */}
       {showBack && (
         <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>

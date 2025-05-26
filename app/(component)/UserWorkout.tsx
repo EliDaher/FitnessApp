@@ -34,12 +34,16 @@ export default function UserWorkout() {
   const [started, setStarted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [tick, setTick] = useState(0); // تحديث واحد لكل ثانية
+  const [tick, setTick] = useState(0); // يجبر الواجهة على التحديث
+  const [paused, setPaused] = useState(false);
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const exerciseTimersRef = useRef<{ [key: string]: number }>({});
-  const pausedExercisesRef = useRef<{ [key: string]: boolean }>({});
   const globalTimerRef = useRef<number>(0);
+  const pausedRef = useRef(paused);
+
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
 
   const getWorkout = async () => {
     try {
@@ -49,16 +53,6 @@ export default function UserWorkout() {
       const res = await getUserWorkout(username);
       const workoutData: WorkoutType = res.data.workout;
       setWorkout(workoutData);
-
-      const timers: { [key: string]: number } = {};
-      const paused: { [key: string]: boolean } = {};
-      workoutData.exercises.forEach((ex) => {
-        timers[ex.exerciseId] = 0;
-        paused[ex.exerciseId] = false;
-      });
-
-      exerciseTimersRef.current = timers;
-      pausedExercisesRef.current = paused;
     } catch (err) {
       console.log(err);
       setError(true);
@@ -78,17 +72,10 @@ export default function UserWorkout() {
     if (intervalRef.current) clearInterval(intervalRef.current);
     setStarted(true);
     intervalRef.current = setInterval(() => {
-      globalTimerRef.current += 1;
-
-      const timers = { ...exerciseTimersRef.current };
-      Object.keys(timers).forEach((key) => {
-        if (!pausedExercisesRef.current[key]) {
-          timers[key] += 1;
-        }
-      });
-
-      exerciseTimersRef.current = timers;
-      setTick(t => t + 1); // يجبر الواجهة على التحديث مرة كل ثانية
+      if (!pausedRef.current) {
+        globalTimerRef.current += 1;
+        setTick(t => t + 1); // تحديث الواجهة
+      }
     }, 1000);
   };
 
@@ -96,28 +83,22 @@ export default function UserWorkout() {
     const username = await AsyncStorage.getItem('username') || '';
     skipOrStartNewWorkout(username);
     setStarted(false);
-    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
 
-    // إعادة تعيين كل المؤقتات
     globalTimerRef.current = 0;
-    const timers = exerciseTimersRef.current;
-    Object.keys(timers).forEach((key) => {
-      timers[key] = 0;
-    });
-
-    exerciseTimersRef.current = timers;
     setTick(t => t + 1);
-  };
-
-  const toggleExerciseTimer = (exerciseId: string) => {
-    pausedExercisesRef.current[exerciseId] = !pausedExercisesRef.current[exerciseId];
-    setTick(t => t + 1); // لتحديث الزر والواجهة
   };
 
   useEffect(() => {
     getWorkout();
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
     };
   }, []);
 
@@ -134,8 +115,19 @@ export default function UserWorkout() {
     <ScreenWrapper>
       <View style={tw`flex-1 mt-6 mx-2`}>
         <View style={tw`items-center mb-4`}>
-          <Text style={tw`text-white text-xl font-bold`}>{workout?.title}</Text>
-          <Text style={tw`text-white/80 text-sm text-center`}>{workout?.description}</Text>
+          <Text style={tw`text-white text-xl font-bold mb-1`}>{workout?.title}</Text>
+          <Text style={tw`text-white/80 text-sm text-center mb-2`}>{workout?.description}</Text>
+
+          {started && (
+            <TouchableOpacity
+              style={tw`bg-yellow-500 px-4 py-2 rounded-full`}
+              onPress={() => setPaused(prev => !prev)}
+            >
+              <Text style={tw`text-black font-bold`}>
+                {paused ? 'استئناف المؤقت' : 'إيقاف مؤقت'}
+              </Text>
+            </TouchableOpacity>
+          )}
         </View>
 
         {/* المؤقت العام */}
@@ -150,8 +142,8 @@ export default function UserWorkout() {
               key={exercise.exerciseId}
               style={tw`bg-white/60 p-4 mb-3 rounded-xl border border-2 border-white`}
             >
-              <View
-                onTouchEnd={() => {
+              <TouchableOpacity
+                onPress={() => {
                   router.navigate({
                     pathname: `/ExercisePage`,
                     params: { exercise: JSON.stringify(exercise) },
@@ -165,20 +157,7 @@ export default function UserWorkout() {
                     مجموعة {i + 1} - تكرارات: {s.reps} - راحة: {s.rest}ث
                   </Text>
                 ))}
-              </View>
-              <View style={tw`flex-row justify-between items-center mt-2`}>
-                <Text style={tw`text-black text-xl`}>
-                  المؤقت: {formatTime(exerciseTimersRef.current[exercise.exerciseId] || 0)}
-                </Text>
-                <TouchableOpacity
-                  style={tw`bg-yellow-500 px-3 py-1 rounded-full`}
-                  onPress={() => toggleExerciseTimer(exercise.exerciseId)}
-                >
-                  <Text style={tw`text-black font-bold`}>
-                    {pausedExercisesRef.current[exercise.exerciseId] ? 'تشغيل' : 'إيقاف'}
-                  </Text>
-                </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
             </View>
           ))}
         </ScrollView>

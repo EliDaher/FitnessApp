@@ -107,8 +107,11 @@ export default function Exercises() {
                 }}  
               >
                 <Image
-                  source={{ uri: item.imageUrl }}
-                  style={tw`h-40 w-full rounded-lg mb-2 shadow border border-white/20`}
+                source={
+                  item.imageUrl
+                    ? { uri: item.imageUrl }
+                    : require('@/assets/images/banners/fitnessTime.png')
+                }                  style={tw`h-40 w-full rounded-lg mb-2 shadow border border-white/20`}
                   resizeMode="stretch"
                 />
                 <Text style={tw`text-white text-lg font-bold text-right`}>{item.exerciseName}</Text>

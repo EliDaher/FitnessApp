@@ -20,8 +20,8 @@ export const twDark = create({
         text: {
           500: '#EEEEFF',
         },
-        white: '#000000',
-        black: '#ffffff',
+        white: '#1A1A1A',
+        black: '#F5F5F7',
       },
       fontFamily: {
         'urbanist': ['Urbanist', 'sans-serif'],

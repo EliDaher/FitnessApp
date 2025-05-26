@@ -13,7 +13,7 @@ type ThemeProviderProps = {
 };
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const [mode, setMode] = useState<'light' | 'dark'>('dark');
 
   const toggleMode = () => {
     setMode((prev) => (prev === 'light' ? 'dark' : 'light'));

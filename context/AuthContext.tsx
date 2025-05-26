@@ -9,7 +9,7 @@ type User = {
 };
 
 type AuthContextType = {
-  user: User | null;
+  user: any;
   authLogin: (user: User) => void;
   logout: () => void;
   loading: boolean;
@@ -23,15 +23,13 @@ export const AuthContext = createContext<AuthContextType>({
 });
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  const authLogin = async (userData: User) => {
-    /*const response = await login(userData.username, userData.password);
-    await AsyncStorage.setItem('username', userData.username);
-    await AsyncStorage.setItem('password', userData.password);
+  const authLogin = async (userData: any) => {
 
-    setUser(userData);*/
+    setUser(userData);
+
   };
 
   const logout = async () => {
