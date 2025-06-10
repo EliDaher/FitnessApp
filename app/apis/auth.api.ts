@@ -5,16 +5,14 @@ import API from "../utils/api";
 export const signup = (
   fullname: string,
   username: string,
-  email: string,
+  number: string,
   password: string,
-  confirmPassword: string
 ) =>
   API.post("/SignUp", {
     fullname,
     username,
-    email,
+    number,
     password,
-    confirmPassword,
 });
 
 // ✅ Login فقط بالبريد وكلمة المرور

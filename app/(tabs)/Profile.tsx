@@ -41,6 +41,13 @@ export default function Profile() {
   const [userData, setUserData] = useState<userType | null>(null)
   const [loading, setLoading] = useState(false)
   
+  useEffect(()=>{
+    if(userData?.username){
+      if( !userData?.date || userData.address == '' || !userData.address){
+        router.navigate('/CompleteData')
+      }
+    }
+  }, [userData?.date])
 
   const getData = async () => {
     setLoading(true)

@@ -1,7 +1,7 @@
-import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, I18nManager } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { useTailwind } from '@/app/hooks/useTailwind';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import FTlogo from '../(component)/FTlogo';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
@@ -15,15 +15,32 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [focusField, setFocusField] = useState<'username' | 'password' | null>(null);
   const tw = useTailwind();
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+
+  
+    useEffect(() => {
+      // تفعيل دعم RTL
+      if (!I18nManager.isRTL) {
+        I18nManager.forceRTL(true);
+        // من الأفضل إعادة تشغيل التطبيق إذا تغيّر الاتجاه
+      }
+    }, []);
 
   const handleLogin = async () => {
     try {
+      setError(false)
+      setLoading(true)
       const response = await login(username, password);
       await AsyncStorage.setItem('username', username);
       await AsyncStorage.setItem('password', password);
       authLogin(response.data.userData)
       router.navigate(`/(tabs)/Home`);
+      setLoading(false)
     } catch (error: any) {
+      setLoading(false)
+      setError(true)
+      if(error.message.includes('Network Error')){ alert('الرجاء التأكد من اتصالك بالانترنت'); setError(false) }
       console.log("Login error:", error.response?.data?.error || error.message);
     }
   };
@@ -56,14 +73,15 @@ export default function Login() {
       <View style={tw`flex-1 justify-center items-center px-6`}>
         <FTlogo />
 
-        <View style={tw`w-full bg-white/5 border border-white/10 rounded-2xl mt-10 py-8 px-4`}>
-          <Text style={tw`text-white text-xl font-semibold text-center mb-4`}>Login</Text>
+        <View style={tw`w-full ${error ? 'bg-red-100' : 'bg-white/5'} border border-white/10 rounded-2xl mt-10 py-8 px-4`}>
+          {error && <Text style={tw`text-red-500 -mt-2 rounded text-lg bg-red-100 font-semibold text-center mb-4`}>حدث خطأ الرجاء التأكد من المدخلات</Text>}
+          <Text style={tw`text-white text-xl font-semibold text-center mb-4`}>تسجيل الدخول</Text>
 
           {/* Username */}
           <View style={tw`mb-4`}>
-            <Text style={tw`text-white text-right text-lg mb-1 mr-2`}>الاسم الثلاثي او رقم الجوال</Text>
+            <Text style={tw`text-white text-right text-lg mb-1 mr-2`}>الاسم الثلاثي</Text>
             <TextInput
-              placeholder="Enter your username"
+              placeholder="ادخل الاسم الثلاثي"
               placeholderTextColor="#999"
               value={username}
               onChangeText={setUsername}
@@ -79,14 +97,14 @@ export default function Login() {
           <View style={tw`mb-6`}>
             <Text style={tw`text-white text-right text-lg mb-1 mr-2`}>كلمة المرور</Text>
             <TextInput
-              placeholder="Enter your password"
+              placeholder="ادخل كلمة المرور الخاصة بك"
               placeholderTextColor="#999"
               secureTextEntry
               value={password}
               onChangeText={setPassword}
               onFocus={() => setFocusField('password')}
               onBlur={() => setFocusField(null)}
-              style={tw`bg-white/10 text-white px-4 py-3 rounded-xl border ${
+              style={tw`bg-white/10 text-white text-right px-4 py-3 rounded-xl border ${
                 focusField === 'password' ? 'border-white' : 'border-white/20'
               }`}
             />
@@ -97,16 +115,16 @@ export default function Login() {
             onPress={handleLogin}
             style={tw`bg-white py-3 rounded-xl border border-white/30`}
           >
-            <Text style={tw`text-black text-center font-semibold`}>Login</Text>
+            <Text style={tw`text-black text-center font-semibold`}>{loading ? "جاري تسجيل الدخول ..." : "تسجيل الدخول"}</Text>
           </TouchableOpacity>
         </View>
 
         {/* Sign Up Link */}
         <View style={tw`flex-row mt-6`}>
-          <Text style={tw`text-white`}>Don't have an account?</Text>
           <TouchableOpacity onPress={() => router.navigate('/SignUp')}>
-            <Text style={tw`text-secondary-500 underline ml-1`}>Sign Up</Text>
+            <Text style={tw`text-secondary-500 underline ml-1`}>حساب جديد</Text>
           </TouchableOpacity>
+          <Text style={tw`text-white`}>لا تملك حسابا ؟</Text>
         </View>
 
       </View>

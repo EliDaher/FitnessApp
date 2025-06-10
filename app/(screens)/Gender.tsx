@@ -67,11 +67,7 @@ export default function Gender() {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       style={tw`flex-1 bg-black`}
     >
-      <ScreenWrapper showBack={false}>
-      {/* Back Button */}
-      <Pressable onPress={() => router.back()} style={tw`mt-6 ml-4`}>
-        <Text style={tw`text-secondary-400 text-base`}>{'<'} Back</Text>
-      </Pressable>
+      <ScreenWrapper showBack={true}>
 
       {/* Main Content */}
       <View style={tw`flex-1 justify-center items-center px-6`}>

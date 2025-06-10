@@ -15,6 +15,7 @@ type SetType = {
 
 type ExerciseType = {
   exerciseId: string;
+  exerciseName: string;
   sets: SetType[];
 };
 
@@ -113,10 +114,12 @@ export default function UserWorkout() {
 
   return (
     <ScreenWrapper>
-      <View style={tw`flex-1 mt-6 mx-2`}>
+      <View style={tw`flex-1 mt-3 mx-2`}>
         <View style={tw`items-center mb-4`}>
-          <Text style={tw`text-white text-xl font-bold mb-1`}>{workout?.title}</Text>
-          <Text style={tw`text-white/80 text-sm text-center mb-2`}>{workout?.description}</Text>
+
+          {/*<Text style={tw`text-white text-xl font-bold mb-1`}>{dayName}</Text>
+          <Text style={tw`text-white/80 text-sm text-center mb-2`}>{workout?.description}</Text>*/}
+
 
           {started && (
             <TouchableOpacity
@@ -151,10 +154,10 @@ export default function UserWorkout() {
                 }}
               >
                 <Text style={tw`text-black font-bold mb-2`}>تمرين #{idx + 1}</Text>
-                <Text style={tw`text-black font-bold mb-2 text-xl`}>{exercise.exerciseId}</Text>
+                <Text style={tw`text-black font-bold mb-2 text-xl`}>{exercise.exerciseName}</Text>
                 {exercise.sets.map((s, i) => (
                   <Text key={i} style={tw`text-black/70 mt-2`}>
-                    مجموعة {i + 1} - تكرارات: {s.reps} - راحة: {s.rest}ث
+                    مجموعة {i + 1} - تكرارات: {s.reps} - راحة: {s.rest} دقيقة
                   </Text>
                 ))}
               </TouchableOpacity>
@@ -168,6 +171,19 @@ export default function UserWorkout() {
         >
           <Text style={tw`text-center text-white text-lg font-bold`}>
             {started ? 'إنهاء التمرين' : 'بدء التمرين'}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={tw`bg-yellow-400 py-2 px-2 mb-2 rounded-xl absolute top-0 right-1`}
+          onPress={async()=>{
+            const username = await AsyncStorage.getItem('username') || '';
+            await skipOrStartNewWorkout(username);
+            await getWorkout()
+            //router.navigate('/Home')
+          }}
+        >
+          <Text style={tw`text-center text-white text-lg font-bold`}>
+            تخطي التمرين
           </Text>
         </TouchableOpacity>
       </View>

@@ -13,9 +13,8 @@ import { AntDesign } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { addHeight } from '../apis/auth.api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as Animatable from 'react-native-animatable';
-import { Ionicons } from '@expo/vector-icons';
 import ScreenWrapper from '../(component)/ScreenWrapper';
+import { TextInput } from 'react-native-gesture-handler';
 
 const ITEM_HEIGHT = 60;
 const { height } = Dimensions.get('window');
@@ -70,11 +69,7 @@ export default function Height() {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       style={tw`flex-1 bg-black`}
     >
-    <ScreenWrapper>
-    {/* Back Button */}
-    <Pressable onPress={() => router.back()} style={tw`mt-6 ml-4`}>
-      <Text style={tw`text-secondary-400 text-base`}>{'<'} Back</Text>
-    </Pressable>
+    <ScreenWrapper showBack={true}>
 
         {/* Main Content */}
         <View style={tw`flex-1 justify-center items-center px-3`}>
@@ -87,8 +82,21 @@ export default function Height() {
 
       {/* Value Display */}
       <View style={tw`items-center mb-2`}>
+        <TextInput
+          style={tw`text-white text-6xl font-extrabold pt-1`}
+          value={String(selectedHeight)}
+          onChangeText={(text) => {
+            const numericValue = Number(text);
+            if (!isNaN(numericValue)) {
+              setSelectedHeight(numericValue);
+            } else {
+              setSelectedHeight(0);
+            }
+          }}
+          keyboardType="numeric"
+        />  
         <Text style={tw`text-white text-4xl font-extrabold pt-4`}>
-          {selectedHeight} <Text style={tw`text-xl`}>Cm</Text>
+          <Text style={tw`text-xl`}>Cm</Text>
         </Text>
       </View>
 

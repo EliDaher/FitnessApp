@@ -35,7 +35,6 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
 
   const { user } = useContext(AuthContext);
-  
 
   const getName = async () => {
     setLoading(true)

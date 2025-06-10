@@ -13,7 +13,7 @@ export default function FTlogo() {
   }, []);
   return (
     <View style={tw`flex flex-row relative`}>
-        <Text style={tw`text-black text-8xl font-bold italic animate-pulse`}>F</Text>
+        <Text style={tw`text-black text-8xl font-bold italic`}>F</Text>
         <Text style={tw`text-black text-8xl font-bold italic`}>T</Text>
     </View>
   )

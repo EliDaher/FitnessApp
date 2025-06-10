@@ -26,7 +26,6 @@ export default function Landing() {
       console.log("Username from storage:", username);
       if (username && password) {
         const res = await login(username, password || '');
-        console.log("Login result:", res);
         if (res?.data) {
           router.replace('/Home'); // ✅ صحيح
           authLogin(res.data.userData)

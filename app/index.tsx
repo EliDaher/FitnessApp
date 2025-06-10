@@ -14,7 +14,7 @@ export default function Index() {
   }, []);
 
   return (
-    <View style={tw`flex-1 justify-center items-center bg-background-800`}>
+    <View style={tw`flex-1 justify-center items-center`}>
       <Redirect href={'/Landing'} />
     </View>
   );

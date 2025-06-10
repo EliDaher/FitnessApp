@@ -7,7 +7,6 @@ import { updatePersonalDetails } from '../apis/user.api';
 import { Alert } from 'react-native';
 import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Pressable } from 'react-native';
 import { Chip } from 'react-native-paper'
 
 export default function CompleteData() {
@@ -114,12 +113,9 @@ export default function CompleteData() {
     
 
   return (
-    <ScreenWrapper showBack={false}>
-        {/* Back Button */}
-        <Pressable onPress={() => router.back()} style={tw`mt-6 ml-4 `}>
-          <Text style={tw`text-secondary-400 text-base`}>{'<'} Back</Text>
-        </Pressable>
-     <View style={tw`flex-1 justify-center items-center px-6`}>
+    <ScreenWrapper showBack={true}>
+
+      <View style={tw`flex-1 justify-center items-center px-6`}>
             <View style={tw`w-full bg-white/10 border border-white/40 rounded-2xl py-8 px-4`}>
               {error ? <Text style={tw`text-red-500/80 border-2 border-red-500/80 py-2 bg-red-500/20 rounded-xl text-lg font-semibold text-center mb-6`}>حدث خطأ الرجاء اعادة المحاولة</Text> : ''}
               <Text style={tw`text-white text-xl font-semibold text-center mb-2`}>الرجاء اكمال البيانات الشخصية</Text>

@@ -16,6 +16,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Animatable from 'react-native-animatable';
 import { Ionicons } from '@expo/vector-icons';
 import ScreenWrapper from '../(component)/ScreenWrapper';
+import { TextInput } from 'react-native-gesture-handler';
 
 const { width } = Dimensions.get('window');
 const ITEM_WIDTH = 55;
@@ -63,12 +64,7 @@ export default function Weight() {
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           style={tw`flex-1 bg-black`}
         >
-        <ScreenWrapper showBack={false}>
-            
-        {/* Back Button */}
-        <Pressable onPress={() => router.back()} style={tw`mt-6 ml-4`}>
-          <Text style={tw`text-secondary-400 text-base`}>{'<'} Back</Text>
-        </Pressable>
+        <ScreenWrapper showBack={true}>
 
         {/* Main Content */}
         <View style={tw`flex-1 justify-center items-center px-6`}>
@@ -100,7 +96,19 @@ export default function Weight() {
 
             {/* Weight Display */}
             <View style={tw`items-center mb-2`}>
-              <Text style={tw`text-white text-6xl font-extrabold pt-1`}>{selectedWeight}</Text>
+              <TextInput
+                style={tw`text-white text-6xl font-extrabold pt-1`}
+                value={String(selectedWeight)}
+                onChangeText={(text) => {
+                  const numericValue = Number(text);
+                  if (!isNaN(numericValue)) {
+                    setSelectedWeight(numericValue);
+                  } else {
+                    setSelectedWeight(0);
+                  }
+                }}
+                keyboardType="numeric"
+              />            
               <Text style={tw`text-white text-xl mt-1`}>{unit.toUpperCase()}</Text>
               <AntDesign name="caretdown" size={24} style={tw`text-secondary-400/70 mt-2`} />
           </View>
@@ -128,7 +136,7 @@ export default function Weight() {
                     <Text
                       style={{
                         fontSize: 20,
-                        color: item === selectedWeight ? '#fff' : '#999',
+                        color: item === selectedWeight ? '#fff' : '#666',
                         fontWeight: item === selectedWeight ? '700' : '400',
                       }}
                     >
